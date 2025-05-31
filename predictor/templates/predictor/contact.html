@@ -87,14 +87,14 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <span class="navbar-title"><span class="logo">DP</span> Disease Prediction App</span>
+    <nav class="navbar" style="border-radius: 22px; margin: 18px auto 0 auto; max-width: 1100px;">
+        <span class="navbar-title"> Disease Prediction App</span>
         <span class="navbar-links">
-            <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
-            <a href="/predict/" class="{% if request.path == '/predict/' %}active{% endif %}">Predict</a>
-            <a href="/about/" class="{% if request.path == '/about/' %}active{% endif %}">About</a>
-            <a href="/faq/" class="{% if request.path == '/faq/' %}active{% endif %}">FAQ</a>
-            <a href="/contact/" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a>
+            <a href="/">Home</a>
+            <a href="/predict/">Predict</a>
+            <a href="/about/">About</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/contact/" class="active">Contact</a>
         </span>
     </nav>
     <div class="contact-section">

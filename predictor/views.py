@@ -2,6 +2,8 @@ from django.shortcuts import render
 import os
 import requests
 from itertools import combinations
+from .models import SymptomInput, PredictionResult
+import datetime
 
 # Use the provided Gemini API key directly
 GEMINI_API_KEY = 'AIzaSyCboD5uYE6edacftARrziAJsWXQaaWvVoc'
@@ -63,6 +65,12 @@ def predict_disease(request):
         else:
             disease = 'Unknown or Non-specific'
             explanation = 'Symptoms do not match a specific disease in our database.'
+        # --- Store in MongoDB ---
+        symptom_doc = SymptomInput(symptoms=list(symptoms), submitted_at=datetime.datetime.utcnow())
+        symptom_doc.save()
+        prediction_doc = PredictionResult(input=symptom_doc, predicted_disease=disease, probability=0.0, predicted_at=datetime.datetime.utcnow())
+        prediction_doc.save()
+        # ---
         return render(request, 'predictor/result.html', {'disease': disease, 'probability': explanation})
     # Always pass symptoms to the predict template for rendering
     return render(request, 'predictor/predict.html', {'symptoms': SYMPTOM_LIST})
