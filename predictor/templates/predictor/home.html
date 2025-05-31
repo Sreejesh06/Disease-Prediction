@@ -1,0 +1,189 @@
+<!-- Home Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Disease Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #181a1b; color: #f1f1f1; font-family: 'Roboto', sans-serif; margin: 0; }
+        .navbar {
+            width: 100%;
+            background: linear-gradient(90deg, #23272a 60%, #238636 100%);
+            padding: 0.7em 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .navbar-title {
+            color: #7ee787;
+            font-size: 1.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-left: 2.5em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        .navbar-title .logo {
+            width: 32px;
+            height: 32px;
+            background: #7ee787;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #23272a;
+            font-weight: 900;
+            font-size: 1.1em;
+        }
+        .navbar-links {
+            margin-right: 2.5em;
+            display: flex;
+            gap: 0.5em;
+        }
+        .navbar-links a {
+            color: #b1bac4;
+            text-decoration: none;
+            margin: 0 0.7em;
+            font-size: 1em;
+            padding: 8px 18px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .navbar-links a.active, .navbar-links a:hover {
+            background: #7ee787;
+            color: #23272a;
+            font-weight: 700;
+        }
+        .home-hero {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            background: #23272a;
+            border-radius: 32px;
+            margin: 80px auto 0 auto;
+            max-width: 1100px;
+            padding: 48px 40px 36px 40px;
+            box-shadow: 0 8px 48px rgba(0,0,0,0.4);
+        }
+        .home-content {
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .home-content h1 {
+            color: #7ee787;
+            margin-top: 0;
+            font-size: 2.2em;
+            margin-bottom: 0.7em;
+            font-weight: 700;
+        }
+        .home-content p {
+            margin-bottom: 1.2em;
+            line-height: 1.8em;
+            font-size: 1.08em;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #238636 0%, #7ee787 100%);
+            color: #181a1b;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 38px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 1.2em;
+            transition: background 0.2s, color 0.2s;
+            text-align: center;
+            text-decoration: none;
+        }
+        .cta-btn:hover {
+            background: linear-gradient(90deg, #7ee787 0%, #238636 100%);
+            color: #fff;
+        }
+        .home-illustration {
+            flex: 1 1 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .home-illustration img {
+            max-width: 340px;
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 4px 32px rgba(34,255,170,0.08);
+        }
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin: 40px auto 0 auto;
+            max-width: 900px;
+        }
+        .quick-link {
+            background: #2d333b;
+            color: #7ee787;
+            border-radius: 8px;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+        .quick-link:hover {
+            background: #7ee787;
+            color: #23272a;
+        }
+        @media (max-width: 1100px) {
+            .home-hero { flex-direction: column; gap: 32px; padding: 32px 10px 18px 10px; }
+            .home-illustration img { max-width: 220px; }
+        }
+        @media (max-width: 700px) {
+            .navbar-title { font-size: 1.1em; margin-left: 0.7em; }
+            .navbar-links { margin-right: 0.7em; }
+            .navbar-links a { padding: 6px 10px; font-size: 0.98em; }
+            .home-hero { padding: 18px 4px 10px 4px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <span class="navbar-title"><span class="logo">DP</span> Disease Prediction App</span>
+        <span class="navbar-links">
+            <a href="/" class="active">Home</a>
+            <a href="/predict/">Predict</a>
+            <a href="/about/">About</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/contact/">Contact</a>
+        </span>
+    </nav>
+    <div class="home-hero">
+        <div class="home-content">
+            <h1>Welcome to the Disease Prediction App</h1>
+            <p>This website helps you predict possible diseases based on your selected symptoms using a rule-based offline engine. No personal data is stored. For more information on diseases, visit the <a href="https://www.cdc.gov/diseasesconditions/" target="_blank">CDC Diseases & Conditions</a> page.</p>
+            <p>To get started, click the button below and select your symptoms for a quick prediction.</p>
+            <a href="/predict/" class="cta-btn">Start Prediction</a>
+        </div>
+        <div class="home-illustration">
+            <img src="data:image/png;base64,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" alt="Medical Illustration">
+        </div>
+    </div>
+    <div class="quick-links">
+        <a class="quick-link" href="https://www.webmd.com/a-to-z-guides/common-symptoms" target="_blank">Common Symptoms</a>
+        <a class="quick-link" href="https://www.mayoclinic.org/diseases-conditions" target="_blank">Mayo Clinic</a>
+        <a class="quick-link" href="https://www.cdc.gov/diseasesconditions/" target="_blank">CDC Diseases</a>
+    </div>
+</body>
+</html>

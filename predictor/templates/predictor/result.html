@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #181a1b;
+            color: #f1f1f1;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 420px;
+            margin: 60px auto;
+            background: #23272a;
+            border-radius: 16px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+            padding: 32px 28px 24px 28px;
+        }
+        h1 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #7ee787;
+            letter-spacing: 1px;
+        }
+        .result-box {
+            background: #2d333b;
+            border-radius: 10px;
+            padding: 18px 16px;
+            margin-bottom: 18px;
+            color: #fff;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        .disease-name {
+            color: #7ee787;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .explanation {
+            color: #c9d1d9;
+            margin-bottom: 8px;
+        }
+        .back-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(90deg, #238636 0%, #7ee787 100%);
+            color: #181a1b;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 0;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .back-btn:hover {
+            background: linear-gradient(90deg, #7ee787 0%, #238636 100%);
+            color: #fff;
+        }
+        .navbar {
+            width: 96%;
+            margin: 18px auto 0 auto;
+            border-radius: 22px;
+            background: linear-gradient(90deg, #23272a 60%, #238636 100%);
+            padding: 0.7em 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .navbar-title {
+            color: #7ee787;
+            font-size: 1.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-left: 2.5em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        .navbar-title .logo {
+            width: 32px;
+            height: 32px;
+            background: #7ee787;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #23272a;
+            font-weight: 900;
+            font-size: 1.1em;
+        }
+        .navbar-links {
+            margin-right: 2.5em;
+            display: flex;
+            gap: 0.5em;
+        }
+        .navbar-links a {
+            color: #b1bac4;
+            text-decoration: none;
+            margin: 0 0.7em;
+            font-size: 1em;
+            padding: 8px 18px;
+            border-radius: 18px;
+            transition: background 0.2s, color 0.2s;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .navbar-links a.active, .navbar-links a:hover {
+            background: #7ee787;
+            color: #23272a;
+            font-weight: 700;
+        }
+        @media (max-width: 700px) {
+            .navbar { width: 99%; margin-left: 0.5%; margin-right: 0.5%; }
+            .navbar-title { font-size: 1.1em; margin-left: 0.7em; }
+            .navbar-links { margin-right: 0.7em; }
+            .navbar-links a { padding: 6px 10px; font-size: 0.98em; }
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 18px 6px 12px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <span class="navbar-title"><span class="logo">DP</span> Disease Prediction App</span>
+        <span class="navbar-links">
+            <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+            <a href="/predict/" class="{% if request.path == '/predict/' %}active{% endif %}">Predict</a>
+            <a href="/about/" class="{% if request.path == '/about/' %}active{% endif %}">About</a>
+            <a href="/faq/" class="{% if request.path == '/faq/' %}active{% endif %}">FAQ</a>
+            <a href="/contact/" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a>
+        </span>
+    </nav>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="result-box">
+            <div class="disease-name">{{ disease }}</div>
+            <div class="explanation">{{ probability }}</div>
+        </div>
+        <a href="/" class="back-btn">&#8592; Back to Symptom Selection</a>
+    </div>
+</body>
+</html>
